@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/all.min.css">
+    <title>cruds</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="bg-dark text-info">
+
+    <nav class="navbar navbar-expand-lg  fixed-top mb-5">
+        <div class="container">
+            <a class="navbar-brand" href="#">CRUDS</a>
+            <button class="navbar-toggler bg-primary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon "></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                  
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- end nav -->
+        <div class="container py-3 text-uppercase mt-5">
+            <h1 class="text-center">product crud</h1>
+            <h2 class="text-center">add product</h2>
+
+             <!-- productname -->
+            <div class="form-floating  m-auto  my-5 w-75">
+                <input type="text" class="form-control " id="productname" placeholder="productname">
+                <div class="alert alert-danger p-3 m-2 w-75 m-auto text-center d-none">
+                    The product name must start with one uppercase letter and be at least 5 characters long.
+                </div>
+                <label for="productname">product.name</label>
+            </div>
+            <!-- end productname -->
+
+           
+            <!-- price -->
+            <div class="  m-auto  my-3 w-75   row">
+                <div class=" col-md-3">
+                <input onkeyup="calculateTotal()" type="number" class="form-control " id="productprice" placeholder="productprice">
+                <div class="alert alert-danger p-3 mt-3 w-75 m-auto text-center d-none">
+                    The price must be a number greater than 7 characters.
+                </div>
+                <label for="productprice"></label>
+               
+                </div>
+
+                <div class="col-md-3">
+                    <input onkeyup="calculateTotal()" type="number" class="form-control" id="producttaxes" placeholder="producttaxes">
+                    <label for="producttaxes"></label>
+                    
+                    
+                </div>
+
+                <div class="col-md-3">
+                     <input onkeyup="calculateTotal()" type="number" class="form-control  col-md-3" id="productads" placeholder="ads"> 
+                     <label for="productads"></label> 
+                </div>
+
+                <div class="col-md-3">
+                    <input  onkeyup="calculateTotal()"   type="number" class="form-control col-md-3" id="productdiscount" placeholder="discount"> 
+                    <label for="productdiscount"></label>
+                </div>
+                
+                 <span class="sp"  id="total"></span>
+
+           
+                 
+            </div>
+            <!-- end price -->
+
+             <!-- catogery -->
+            <div class="form-floating  m-auto  my-3 w-75">
+                <input oninput=" vaildateinputs (this)"   list="list" type="text" class="form-control " id="productcatogary" placeholder="productcatogary">
+                <div class="alert alert-danger p-3 m-2 w-75 m-auto text-center d-none">
+                    must select a category from the list.
+                </div>
+                <label for="productcatogary">catogary</label>
+                
+                <datalist id="list">
+                    <option value="Mopile"></option>
+                    <option value="laptop"></option>
+                    <option value="Screen"></option>
+                    <option value="Tv"></option>
+                    
+                </datalist>
+            </div>
+            <!-- end catogary -->
+             <!-- count -->
+            <div class="form-floating  m-auto  my-3 w-75">
+                <input oninput=" vaildateinputs (this)"  type="text" class="form-control " id="count" placeholder="count">
+                <div class="alert alert-danger p-3 mt-2 w-75 m-auto text-center d-none">
+                    Please enter a number less than 100.
+                </div>
+                <label for="count">count</label>
+            </div>
+           
+              
+           
+            <!-- end count -->
+             
+            <!--  search img -->
+            <div class="form-floating  m-auto  my-3 w-75">
+                <input type="file" class="form-control" id="productimg" placeholder="imag">
+                <label for="productimg"></label>   
+            </div>
+            <!-- end img -->
+            
+            <div class="form-floating  m-auto   w-75">
+                <input oninput="searchdata(this.value)" type="search" class="form-control my-1" id="search" placeholder="search">
+                <label for="search">search</label>
+                <div>
+                     <div>
+                    <input onclick="getsearch(this.id)" type="search" class="form-control" id="searchtitle" placeholder="search by title">                  
+                </div>
+                <!-- <div>
+                    <input onclick="getsearch(this.id)" type="search" class="form-control" id="searchcatogary"
+                        placeholder="search by catogary">
+                </div> -->
+                </div>
+             <img src="">
+               
+            </div>
+            <div>
+                <button type="button"  class="btn btn-primary btn-lg   add " id="add" >add product</button>
+
+            </div>
+            <div class="mt-4  dell">
+
+             <button onclick="" class="text-center w-75 btn btn-danger me-sm-auto " type="button">Delete All</button>
+
+            </div>
+         
+
+        <!-- table -->
+       
+        <section class="table-responsive-md my-3 m-auto ">
+            <table class=" table table-secondary  table-bordered text-center col-md-6  ">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>title</th>
+                        <th>price</th>
+                        <th>taxes</th>
+                        <th>ads</th>
+                        <th>discount</th>
+                        <th>total</th>
+                        <th>catogary</th>
+                        <th>img</th>
+                        <th>update</th>
+                        <th>delete</th>
+
+                    </tr>
+                   
+                </thead>
+
+                <tbody id="tbody" class="text-center">
+
+                </tbody>
+
+            </table>
+        </section>
+        </div>
+
+
+      
+    
+ 
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+</html>
